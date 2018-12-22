@@ -1,0 +1,4 @@
+**/*.input
+**/*.out
+**/*.txt
+!**/best-score.txt
