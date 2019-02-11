@@ -1,5 +1,4 @@
 import numpy as np
-import sys
 from pathlib import Path
 class GA:
     def __init__(self):
@@ -29,9 +28,9 @@ class GA:
         input_file.close
     def init(self):
         # beginning amount of entities
-        self.countEntities = 800
+        self.countEntities = 400
         # beginning amount of 
-        self.countCrossOver = 400
+        self.countCrossOver = 100
         # maximum count of 
         self.numberOfTasks = len(self.tasks)
         # current generation
@@ -105,16 +104,16 @@ class GA:
                 # np.random.shuffle(genes)
             self.addEntity(self.generation, genes, 'Developer_' + str(length + 1))
 
-        if self.countStaticScore > 50:
-            self.outOfLocalMinimum()
+        # if self.countStaticScore > 50:
+        #     self.outOfLocalMinimum()
 
     def beginMutations(self, mutationsTo):
-        if (self.maxScore > 1500.0) and (self.generation > 50) and (self.generation % 10 == 0):
+        if (self.maxScore > 1600.0) and (self.generation > 300) and (self.generation % 75 == 0):
             # if self.countStaticScore > round(500 / self.generation):
-            # for index in mutationsTo:
-            #     self.mutation(index)
-            for indexEntity in range(len(self.entities)):
-                self.mutation(indexEntity)
+            for index in mutationsTo:
+                self.mutation(index)
+            # for indexEntity in range(len(self.entities / 4)):
+            #     self.mutation(indexEntity)
                 # self.mutation(self.entities[np.random.randint(len(self.entities) - 1, dtype = int)])
             # self.countStaticScore = 0
             print('MUTATED ' + str(len(mutationsTo)) + ' ENTITIES')
@@ -178,6 +177,7 @@ class GA:
 
             if (float(score) > 1600.0):
                 output_file = open('results/' + str(score) + '.txt', 'w')
+                # output_file = open('' + str(score) + '.txt', 'w')
                 output_file.write(' '.join(map(str, [x + 1 for x in genes])))
                 output_file.close
 
