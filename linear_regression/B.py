@@ -30,3 +30,11 @@ def grad_mean_squared_error(theta, X, y):
     score *= 2 / i
 
     return score
+
+X = np.array([[1,2],[3,4],[4,5]])
+
+theta = np.array([5, 6])
+
+y = np.array([1, 2, 1])
+
+print(linear_func(theta, X[0]))
